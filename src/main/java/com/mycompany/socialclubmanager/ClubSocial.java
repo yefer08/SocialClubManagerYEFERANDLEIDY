@@ -188,6 +188,13 @@ public void registerMember() {
 
         // Solicitar el nombre del usuario
         String name = JOptionPane.showInputDialog("Enter the user's name:");
+        
+        // Validar que el nombre no sea un número
+        if (isNumeric(name)) {
+            JOptionPane.showMessageDialog(null, "User name cannot be a number. Please enter a valid name.");
+            return; // Salir del método si el nombre es un número
+        }
+
         // Solicitar el ID del usuario
         String id = JOptionPane.showInputDialog("Enter the user's ID:");
         
@@ -247,6 +254,17 @@ public void registerMember() {
         JOptionPane.showMessageDialog(null, "Invalid input for funds. Please enter a numeric value.");
     }
 }
+
+// Método auxiliar para verificar si una cadena es numérica
+private boolean isNumeric(String str) {
+    try {
+        Integer.valueOf(str); // Intenta convertir la cadena a un número entero
+        return true; // Si tiene éxito, es numérico
+    } catch (NumberFormatException e) {
+        return false; // Si lanza una excepción, no es numérico
+    }
+}
+
 
 
 
@@ -546,4 +564,3 @@ public void EditInformation() {
         return membersList; // Devuelve la lista de miembros
     }
 }
-
