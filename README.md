@@ -1,10 +1,12 @@
 # CS1_YeferAndLeydi_ClubSociaalProject
 **Nombre de la Materia:** Construccion de sotfware 1
+
 **Nombre del Proyecto:** Cubsocial project
+
 **Equipo:** YeferAndLeydi
 **Integrantes:**
 * Yefer Yesid Mosquera Cordoba
-* Leydi Joana Marin
+* Leydi Joana Marin Arias
   
 **Descripción:**
 Este proyecto es una aplicación para gestionar un club social, permitiendo registrar y gestionar miembros, sus afiliados,
