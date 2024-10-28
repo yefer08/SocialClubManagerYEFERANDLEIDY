@@ -4,6 +4,7 @@
 **Nombre del Proyecto:** Cubsocial project
 
 **Equipo:** YeferAndLeydi
+
 **Integrantes:**
 * Yefer Yesid Mosquera Cordoba
 * Leydi Joana Marin Arias
