@@ -167,9 +167,26 @@ public class Member {
         if (inputAmount != null && !inputAmount.trim().isEmpty()) {
             try {
                 int additionalFunds = Integer.parseInt(inputAmount.trim());
+                double newTotalFunds = this.availableFunds + additionalFunds;
+
+                // Validar según el tipo de suscripción
+                if ("REGULAR".equals(this.subscription)) {
+                    double REGULAR_LIMIT=1000000;
+                    if (newTotalFunds > REGULAR_LIMIT) {
+                        JOptionPane.showMessageDialog(null, "Cannot exceed the REGULAR limit of " + REGULAR_LIMIT + ".");
+                        return;
+                    }
+                } else if ("VIP".equals(this.subscription)) {
+                    double VIP_LIMIT=5000000;
+                    if (newTotalFunds > VIP_LIMIT) {
+                        JOptionPane.showMessageDialog(null, "Cannot exceed the VIP limit of " + VIP_LIMIT + ".");
+                        return;
+                    }
+                }
+
                 // Verificar si el monto total es válido
-                ErrorHandler.checkAvailableFunds(this.availableFunds + additionalFunds);
-                this.availableFunds += additionalFunds;
+                ErrorHandler.checkAvailableFunds(newTotalFunds);
+                this.availableFunds = newTotalFunds;
                 JOptionPane.showMessageDialog(null, "Funds updated. Total funds: " + this.availableFunds);
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Invalid input. Please enter a numeric value.");
@@ -181,6 +198,8 @@ public class Member {
         }
     }
 }
+
+
 
  
     // Método para agregar un afiliado por nombre
@@ -211,9 +230,16 @@ public class Member {
 
         affiliateName = affiliateName.trim();
 
+        // Validar que el nombre no esté vacío
         if (affiliateName.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Affiliate name cannot be empty. Please try again.");
             continue;  // Volver a pedir el nombre si está vacío
+        }
+
+        // Validar que el nombre no sea un número
+        if (isNumeric(affiliateName)) {
+            JOptionPane.showMessageDialog(null, "Affiliate name cannot be a number. Please enter a valid name.");
+            continue;  // Volver a pedir el nombre si es un número
         }
 
         Affiliates newAffiliate = new Affiliates(affiliateName);
@@ -239,6 +265,16 @@ public class Member {
 
     // Mostrar el resultado final en un cuadro de diálogo
     JOptionPane.showMessageDialog(null, resultMessage.toString());
+}
+
+// Método auxiliar para verificar si una cadena es numérica
+private boolean isNumeric(String str) {
+    try {
+        Integer.valueOf(str); // Intenta convertir la cadena a un número entero
+        return true; // Si tiene éxito, es numérico
+    } catch (NumberFormatException e) {
+        return false; // Si lanza una excepción, no es numérico
+    }
 }
 
 
@@ -271,7 +307,6 @@ public class Member {
     }
     
 }
-
 
 
 
