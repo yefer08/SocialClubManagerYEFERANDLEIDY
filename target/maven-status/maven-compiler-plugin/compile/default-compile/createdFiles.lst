@@ -1,0 +1,14 @@
+com\mycompany\socialclubmanager\ClubSocial.class
+com\mycompany\socialclubmanager\CsvFolder.class
+com\mycompany\socialclubmanager\ErrorHandler$MemberNotFoundException.class
+com\mycompany\socialclubmanager\SocialClubManager.class
+com\mycompany\socialclubmanager\ErrorHandler.class
+com\mycompany\socialclubmanager\ErrorHandler$MaxVIPMembersException.class
+com\mycompany\socialclubmanager\ErrorHandler$InsufficientFundsException.class
+com\mycompany\socialclubmanager\Member.class
+com\mycompany\socialclubmanager\Affiliates.class
+com\mycompany\socialclubmanager\ErrorHandler$InvalidInvoiceAmountException.class
+com\mycompany\socialclubmanager\ErrorHandler$DuplicateIDException.class
+com\mycompany\socialclubmanager\InvocesClub.class
+com\mycompany\socialclubmanager\ErrorHandler$MaxUsersException.class
+com\mycompany\socialclubmanager\Invoice.class
