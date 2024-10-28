@@ -1,4 +1,4 @@
-# CS1_YeferAndLeydi_ClubSociaalProject
+# CS1_YeferAndLeydi_ClubSocialProject
 **Nombre de la Materia:** Construccion de sotfware 1
 **Nombre del Proyecto:** Cubsocial project
 **Equipo:** YeferAndLeydi
