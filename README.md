@@ -14,6 +14,7 @@ La información se guarda en un archivo CSV, lo cual facilita su persistencia y 
 * Java 11
 * Maven
 * CSV
+  
 **Instrucciones de compilación y ejecución:**
 1. Clonar el repositorio.
 2. Ejecutar `mvn clean package` para compilar el proyecto.
