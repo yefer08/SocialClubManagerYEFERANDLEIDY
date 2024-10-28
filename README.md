@@ -20,9 +20,11 @@ La información se guarda en un archivo CSV, lo cual facilita su persistencia y 
 2. Ejecutar `mvn clean package` para compilar el proyecto.
 3. Ejecutar `java -jar target/sistema-gestion-alumnos.jar` para iniciar la
 aplicación.
+
 FORMATO DE LA EVALUACIÓN DE
 SEGUIMIENTO O TRABAJOS
 INDEPENDIENTES
+
 Código: FO-DOC-12
 Versión: 02
 Fecha de Aprobación:
