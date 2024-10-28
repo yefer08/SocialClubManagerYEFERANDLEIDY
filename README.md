@@ -5,6 +5,7 @@
 **Integrantes:**
 * Yefer Yesid Mosquera Cordoba
 * Leydi Joana Marin
+* 
 **Descripción:**
 Este proyecto es una aplicación para gestionar un club social, permitiendo registrar y gestionar miembros, sus afiliados,
 y realizar operaciones financieras como la generación y pago de facturas.
