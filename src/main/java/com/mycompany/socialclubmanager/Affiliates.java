@@ -10,6 +10,7 @@ package com.mycompany.socialclubmanager;
  */
 public class Affiliates {
     private String name;
+    private String memberId; // ID del miembro al que pertenece el afiliado
 
     public Affiliates(String name) {
         this.name = name;
@@ -22,21 +23,22 @@ public class Affiliates {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Affiliates(String name, String memberId) {
+        this.name = name;
+        this.memberId = memberId;
+    }
+
+    public String getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
+    }
+    
+    
 }
 
-
-    
-    
-    // Método para listar y agregar afiliados a un miembro
- /*public void listOfPeople(Scanner sc, Member member) {
-    System.out.println("Enter the number of affiliates:");
-    int numAffiliates = sc.nextInt();
-    sc.nextLine(); // Limpiar el buffer
-
-    for (int i = 0; i < numAffiliates; i++) {
-        System.out.println("Enter the name of affiliate #" + (i + 1) + ":");
-        member.addAffiliate(String affiliateName); // Llamar al método addAffiliate para agregar el afiliado
-    }
-  }*/
    
 
