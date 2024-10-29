@@ -11,16 +11,30 @@ package com.mycompany.socialclubmanager;
 public class Invoice extends InvocesClub { // Contador para generar IDs únicos
 private final String affiliateName;
     private String id;
+    private String idmember;
+    
+    
 
     // Constructor
    public Invoice(double amount, String affiliateName) {
         super(amount); // Llama al constructor de la clase base
         this.affiliateName = affiliateName; // Asigna el nombre del afiliado
+        this.idmember = idmember;
     }
 
     public String getAffiliateName() {
         return affiliateName; // Retorna el nombre del afiliado
     }
+
+    public String getIdmember() {
+        return idmember;
+    }
+
+    public void setIdmember(String idmember) {
+        this.idmember = idmember;
+    }
+    
+    
 
     // Métodos getters
     @Override
