@@ -23,53 +23,67 @@ public class CsvFolder {
         this.nameFile = nameFile;
     }
 
-    // Método que recibe Listas de ID de miembros y nombres de afiliados
-    public void writerFile(List<String> userList, List<String> affiliates) {
+    // Método que recibe Listas de ID de miembros y nombres de miembro
+    public void writeMembersFile(List<Member> userList, String headers) {
         try (FileWriter fileWriter = new FileWriter(nameFile);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
 
             // Escribir la cabecera
-            printWriter.println("ID,NAME_MEMBER");
-
-            // Escribir los datos de las listas en el archivo CSV
-            for (int i = 0; i < userList.size(); i++) {
-                String userId = userList.get(i);
-                String affiliateName = affiliates.get(i);
-                // Asegurarse de que los datos estén entre comillas
-                printWriter.println("\"" + userId + "\",\"" + affiliateName + "\"");
+            printWriter.println(headers);
+            
+            
+            for (Member member : userList) {
+                 printWriter.println("\"" + member.getId() + "\",\"" + member.getName() + "\"");
             }
 
             System.out.println("Archivo CSV creado exitosamente: " + nameFile);
 
         } catch (IOException e) {
             showErrorDialog("Error al escribir en el archivo: " + e.getMessage());
-            e.printStackTrace(); // Manejo de excepciones
+            // Manejo de excepciones
         }
     }
-
-    // Método que recibe arrays de ID de miembros y nombres de afiliados
-    public void writerFile(String[] userList, String[] affiliates) {
-        try (FileWriter fileWriter = new FileWriter(nameFile);
+    public void writeAffiliatesFile(List<Affiliates> affiliate, String headers) {
+        try (FileWriter fileWriter = new FileWriter(nameFile,true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
 
             // Escribir la cabecera
-            printWriter.println("ID - NAME,NAME_MEMBER");
-
-            // Escribir los datos de los arrays en el archivo CSV
-            for (int i = 0; i < userList.length; i++) {
-                String userId = userList[i];
-                String affiliateName = affiliates[i];
-
-                printWriter.println("\"" + userId + "\",\"" + affiliateName + "\"");
+            printWriter.println(headers);
+            
+            
+            for (Affiliates afiliate:affiliate) {
+                 printWriter.println("\"" + afiliate.getMemberId()+ "\",\"" + afiliate.getName()+ "\"");
             }
 
-            System.out.println("CSV file created successfully: " + nameFile);
+            System.out.println("Archivo CSV creado exitosamente: " + nameFile);
 
         } catch (IOException e) {
-            showErrorDialog("Error writing to file: " + e.getMessage());
-            e.printStackTrace(); // Manejo de excepciones
+            showErrorDialog("Error al escribir en el archivo: " + e.getMessage());
+            // Manejo de excepciones
         }
     }
+    
+    
+    public void writeInvoicesFile(List<Invoice> invoices, String headers) {
+    try (FileWriter fileWriter = new FileWriter(nameFile, true);
+         PrintWriter printWriter = new PrintWriter(fileWriter)) {
+        
+         printWriter.println(headers);
+
+
+        for (Invoice invoice : invoices) {
+            printWriter.println("\"" + invoice.getIdmember()+ "\",\"" + invoice.getId() + "\",\"" + invoice.getAffiliateName() + "\"");
+        }
+
+        System.out.println("Archivo CSV actualizado exitosamente: " + nameFile);
+
+    } catch (IOException e) {
+        showErrorDialog("Error al escribir en el archivo: " + e.getMessage());
+    }
+}
+    
+    
+    
 
     // Método para limpiar el archivo existente
     public void clearFile() {
@@ -80,7 +94,7 @@ public class CsvFolder {
             System.out.println("CSV file deleted and prepared for new data: " + nameFile);
         } catch (IOException e) {
             showErrorDialog("Error cleaning file: " + e.getMessage());
-            e.printStackTrace(); // Manejo de excepciones
+            // Manejo de excepciones
         }
     }
 
@@ -96,7 +110,7 @@ public class CsvFolder {
             }
         } catch (IOException e) {
             showErrorDialog("Error reading file: " + e.getMessage());
-            e.printStackTrace(); // Manejo de excepciones
+            // Manejo de excepciones
         }
 
         // Mostrar el contenido en un cuadro de diálogo
@@ -108,7 +122,6 @@ public class CsvFolder {
         JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
-
 
 
 
