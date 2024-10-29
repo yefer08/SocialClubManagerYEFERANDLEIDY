@@ -25,10 +25,9 @@ FORMATO DE LA EVALUACIÓN DE
 SEGUIMIENTO O TRABAJOS
 INDEPENDIENTES
 
-Código: FO-DOC-12
+Código Grupo: FO-DOC-12
 Versión: 02
 Fecha de Aprobación:
-Julio 26 de 2022
-Página 5 de 5
+Octubre 30 de 2024
 COPIA CONTROLADA
 **Licencia:** MIT
