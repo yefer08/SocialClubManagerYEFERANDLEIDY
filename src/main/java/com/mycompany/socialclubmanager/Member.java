@@ -11,7 +11,6 @@ package com.mycompany.socialclubmanager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
  
 public class Member {
@@ -19,9 +18,11 @@ public class Member {
     private String id;
     private double availableFunds;
     private String subscription;
-    private List<Affiliates> affiliates;  // Lista de afiliados
-    private List<Invoice> invoices; // Lista de facturas
+    private final List<Affiliates> affiliates;  // Lista de afiliados
+    private final List<Invoice> invoices; // Lista de facturas
     private final int MAX_INVOICES = 20;
+    private final String affiliatesFileName = "Affiliates.csv";
+    private final String invocesFileName = "Invoices.csv";
  
     // Constructor sin parámetros
     public Member() {
@@ -70,13 +71,17 @@ public class Member {
         return availableFunds;
     }
  
-    public void setAffiliates(List<Affiliates> affiliates) {
-        this.affiliates = affiliates;
-    }
- 
     public List<Affiliates> getAffiliates() {
-        return affiliates;
+    return affiliates;
     }
+    
+    
+    
+    
+    
+    
+ 
+    
  
     public boolean hasPendingInvoices() {
         return invoices.stream().anyMatch(invoice -> !invoice.isPaid());
@@ -209,6 +214,7 @@ public class Member {
         Affiliates newAffiliate = new Affiliates(affiliateName); // Crea un objeto Affiliates
         affiliates.add(newAffiliate);  // Agrega el afiliado a la lista
         System.out.println("Affiliate added: " + affiliateName);
+        
     }
  
     // Método para listar y agregar múltiples afiliados
@@ -245,6 +251,7 @@ public class Member {
         Affiliates newAffiliate = new Affiliates(affiliateName);
         affiliates.add(newAffiliate);  // Agregar el afiliado a la lista
         JOptionPane.showMessageDialog(null, "Affiliate added: " + affiliateName);
+        
     }
 
     // Mostrar la lista completa de afiliados
@@ -276,37 +283,15 @@ private boolean isNumeric(String str) {
         return false; // Si lanza una excepción, no es numérico
     }
 }
-
-
- 
-    // Método para mostrar los afiliados
-    public void showAffiliates(Scanner sc) {
-        System.out.println("Enter Member ID to view your affiliates: ");
-        String memAffiliates = sc.nextLine(); // Leer ID del miembro
-        // Verificar si el ID del miembro coincide
-        if (this.id.equals(memAffiliates)) {
-            // Verificar si el miembro tiene afiliados
-            if (affiliates.isEmpty()) {
-                System.out.println("There are no affiliates registered for " + name + ".");
-            } else {
-                System.out.println("Affiliates for " + name + ":");
-                // Mostrar la lista de afiliados (nombres)
-                for (Affiliates affiliate : affiliates) {
-                    System.out.println("- " + affiliate);
-                }
-            }
-        } else {
-            System.out.println("Member ID does not match. Affiliates cannot be shown.");
-        }
-    }
-
-   public String getAffiliatesAsString() {
-        return affiliates.stream()
-                .map(Affiliates::toString) 
-                .collect(Collectors.joining(", ")); // Une los nombres separados por comas
+    
+    public void addRecordToFileAffiliates() {
+        CsvFolder csvfolder = new CsvFolder(this.affiliatesFileName);
+        csvfolder.writeAffiliatesFile(this.getAffiliates(), "ID_MEMBER, NAME_AFFILIATES");
     }
     
-}
-
+    public void addRecordToInvoices() {
+        CsvFolder csvfolder = new CsvFolder(this.invocesFileName);
+        csvfolder.writeAffiliatesFile(this.getAffiliates(), "ID_MEMBER,ID_INVOICE, NAME_AFFILIATES");
+    }
 
 
