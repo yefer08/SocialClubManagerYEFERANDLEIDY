@@ -10,9 +10,10 @@
 Este proyecto es una aplicación para gestionar un club social, permitiendo registrar y gestionar miembros, sus afiliados,
 y realizar operaciones financieras como la generación y pago de facturas.
 La información se guarda en un archivo CSV, lo cual facilita su persistencia y accesibilidad.
+
 **Requerimientos:**
 * Java 11
-* Maven
+* Maven 23
 * CSV
   
 **Instrucciones de compilación y ejecución:**
@@ -25,8 +26,8 @@ FORMATO DE LA EVALUACIÓN DE
 SEGUIMIENTO O TRABAJOS
 INDEPENDIENTES
 
-Código Grupo: FO-DOC-12
-Versión: 02
+Código Grupo: PREPRO24020060002
+Versión: 17
 Fecha de Aprobación:
 Octubre 30 de 2024
 COPIA CONTROLADA
