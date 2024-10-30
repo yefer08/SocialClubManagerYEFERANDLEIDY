@@ -27,8 +27,11 @@ SEGUIMIENTO O TRABAJOS
 INDEPENDIENTES
 
 Código Grupo: PREPRO24020060002
+
 Versión: 17
+
 Fecha de Aprobación:
 Octubre 30 de 2024
+
 COPIA CONTROLADA
 **Licencia:** MIT
