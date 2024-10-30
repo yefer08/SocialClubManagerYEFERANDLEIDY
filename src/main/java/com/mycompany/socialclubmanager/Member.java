@@ -293,5 +293,5 @@ private boolean isNumeric(String str) {
         CsvFolder csvfolder = new CsvFolder(this.invocesFileName);
         csvfolder.writeAffiliatesFile(this.getAffiliates(), "ID_MEMBER,ID_INVOICE, NAME_AFFILIATES");
     }
-
+}
 
