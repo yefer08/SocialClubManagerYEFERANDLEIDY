@@ -27,6 +27,7 @@ public class ClubSocial {
     private final String affiliatesFileName = "affiliates.csv";
     private final List<Invoice>invoices;
     private final String invocesFileName = "Invoices.csv";
+    private int adminPassword = 2024;
 
     public ClubSocial() {
         this.userList = new ArrayList<>();
@@ -583,44 +584,63 @@ public class ClubSocial {
         affiliatesCsvFolder.writeAffiliatesFile(this.getAffiliates(), "ID_MEMBER,NAME_AFFILIATES");
       
         CsvFolder listInvoices = new CsvFolder(this.invocesFileName);
-        listInvoices.writeInvoicesFile(invoices, "ID_MEMBER,ID_INVOICE,NAME_AFFILIATES");
+        listInvoices.writeInvoicesFile(this.getInvoices(), "ID_MEMBER,ID_INVOICE,NAME_AFFILIATES");
     }
     
     
 
 public void showDocumentInfo() {
-    int choice;
-
-    do {
-        String input;
-        input = JOptionPane.showInputDialog(null, """
-                                                  Select an option:
-                                                  1. Show members
-                                                  2. Show affiliates
-                                                  3. Show invoices
-                                                  4. Exit""",
-                "Documents Menu",
-                JOptionPane.QUESTION_MESSAGE);
-
-        if (input == null) {
-            choice = 4; // Si el usuario cierra el diálogo, salir del menú
-        } else {
-            try {
-                choice = Integer.parseInt(input);
-            } catch (NumberFormatException e) {
-                choice = -1; // Opción no válida
-            }
-
-            switch (choice) {
-                case 1 -> displayMembersFromFile();
-                case 2 -> displayAffiliatesFromFile();
-                case 3 -> displayInvoicesFromFile();
-                case 4 -> JOptionPane.showMessageDialog(null, "Saliendo del menú...");
-                default -> JOptionPane.showMessageDialog(null, "Opción no válida. Intente de nuevo.");
-            }
+        if (!verifyAdminPassword()) {
+            JOptionPane.showMessageDialog(null, "Incorrect password. Access denied.");
+            return;
         }
-    } while (choice != 4);
-}
+
+        int choice;
+
+        do {
+            String input;
+            input = JOptionPane.showInputDialog(null, """
+                                                      Select an option:
+                                                      1. Show members
+                                                      2. Show affiliates
+                                                      3. Show invoices
+                                                      0. Exit""",
+                    "Documents Menu",
+                    JOptionPane.QUESTION_MESSAGE);
+
+            if (input == null) {
+                choice = 4;
+            } else {
+                try {
+                    choice = Integer.parseInt(input);
+                } catch (NumberFormatException e) {
+                    choice = -1; // Opción no válida
+                }
+
+                switch (choice) {
+                    case 1 -> displayMembersFromFile();
+                    case 2 -> displayAffiliatesFromFile();
+                    case 3 -> displayInvoicesFromFile();
+                    case 0 -> JOptionPane.showMessageDialog(null, "Exiting the menu to the main menu...");
+                    default -> JOptionPane.showMessageDialog(null, "Invalid option. try again.");
+                }
+            }
+        } while (choice != 0);
+    }
+
+    private boolean verifyAdminPassword() {
+        String input = JOptionPane.showInputDialog(null, "Enter the administrator password:", "Verificación", JOptionPane.QUESTION_MESSAGE);
+        if (input == null) {
+            return false; 
+        }
+        try {
+            int enteredPassword = Integer.parseInt(input);
+            return enteredPassword == adminPassword;
+        } catch (NumberFormatException e) {
+            return false; // Contraseña no válida
+        }
+    }
+
 
 
     public void displayMembersFromFile() {
@@ -637,13 +657,16 @@ public void showDocumentInfo() {
     }
     
     public void exit() {
-    int response = JOptionPane.showConfirmDialog(null, "¿Desea guardar los cambios?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
+    int response = JOptionPane.showConfirmDialog(null, "¿You want to save the changes?", "Confirm departure", JOptionPane.YES_NO_OPTION);
 
     if (response == JOptionPane.NO_OPTION) {
-        System.out.println("Saliendo del programa");
+        System.out.println("Exiting the program");
     } else if (response == JOptionPane.YES_OPTION) {
-        System.out.println("Cambios guardados exitosamente");
+        System.out.println("Changes saved successfully");
         addRecordToFile();
     }
-    System.exit(0);
+    System.exit(0); 
 }
+
+        
+   }
